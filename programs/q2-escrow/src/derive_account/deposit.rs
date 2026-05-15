@@ -24,10 +24,11 @@ pub struct Deposit<'info> {
     pub maker_ata_a: InterfaceAccount<'info, TokenAccount>,
 
     #[account(
-        mut,
-        has_one = maker,
+        init,
+        payer = maker,
+        space = Escrow::DISCRIMINATOR.len() + Escrow::INIT_SPACE,
         seeds = [b"escrow", maker.key().as_ref(), mint_a.key().as_ref()],
-        bump = escrow.bump
+        bump
     )]
     pub escrow: Account<'info, Escrow>,
 
