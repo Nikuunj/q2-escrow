@@ -10,7 +10,7 @@ pub struct ConfigGame {
 }
 
 #[derive(InitSpace)]
-#[account]
+#[account(discriminator = 1)]
 pub struct Escrow {
     pub maker: Pubkey,
     pub require: u64,
