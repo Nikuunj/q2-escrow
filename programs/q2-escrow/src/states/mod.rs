@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 
 #[account]
-pub struct Config {
+pub struct ConfigGame {
     pub reciever: Pubkey,
     pub last_amount: u64,
     pub mint: Pubkey,
