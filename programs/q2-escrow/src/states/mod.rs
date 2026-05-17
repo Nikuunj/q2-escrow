@@ -9,6 +9,7 @@ pub struct ConfigGame {
     pub end_time: i64,
     pub seed: u64,
     pub bump: u8,
+    pub create_by: Pubkey
 }
 
 #[derive(InitSpace)]
