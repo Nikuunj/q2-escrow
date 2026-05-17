@@ -26,7 +26,7 @@ pub struct Deposit<'info> {
     #[account(
         mut,
         has_one = maker,
-        seeds = [b"escrow", maker.key().as_ref(), mint_a.key().as_ref()],
+        seeds = [b"escrow", escrow.seed.to_le_bytes().as_ref(), maker.key().as_ref(), mint_a.key().as_ref()],
         bump = escrow.bump
     )]
     pub escrow: Account<'info, Escrow>,

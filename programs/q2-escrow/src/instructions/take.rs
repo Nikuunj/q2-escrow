@@ -7,6 +7,7 @@ impl<'info> Take<'info> {
     pub fn take(&mut self) -> Result<()> {
         let signer_seeds: &[&[&[u8]]] = &[&[
             b"escrow",
+            &self.escrow.seed.to_le_bytes(),
             self.maker.to_account_info().key.as_ref(),
             &self.mint_a.to_account_info().key.as_ref(),
             &[self.escrow.bump],

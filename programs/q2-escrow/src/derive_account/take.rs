@@ -48,7 +48,7 @@ pub struct Take<'info> {
         has_one = mint_a,
         has_one = maker,
         has_one = mint_b,
-        seeds = [b"escrow", maker.key().as_ref(), mint_a.key().as_ref()],
+        seeds = [b"escrow", escrow.seed.to_le_bytes().as_ref(), maker.key().as_ref(), mint_a.key().as_ref()],
         bump = escrow.bump
     )]
     pub escrow: Box<Account<'info, Escrow>>,

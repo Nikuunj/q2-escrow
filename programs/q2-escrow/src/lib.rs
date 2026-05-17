@@ -8,17 +8,24 @@ mod instructions;
 
 pub use derive_account::*;
 pub use states::*;
-pub use instruction::*;
 
 #[program]
 pub mod q2_escrow {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
+    pub fn initialize(ctx: Context<Init>, seed: u64, amount: u64, end_time: i64) -> Result<()> {
+        ctx.accounts.init(seed, amount, end_time, &ctx.bumps)
+    }
+
+    pub fn deposit(ctx: Context<Deposit>, amount: u64) -> Result<()> {
+        ctx.accounts.deposit(amount)
+    }
+
+    pub fn take(ctx: Context<Take>) -> Result<()> {
+        ctx.accounts.take()
+    }
+
+    pub fn refund(ctx: Context<Refund>) -> Result<()> {
+        ctx.accounts.refund()
     }
 }
-
-#[derive(Accounts)]
-pub struct Initialize {}

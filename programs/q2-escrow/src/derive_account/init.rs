@@ -4,6 +4,7 @@ use anchor_spl::token_interface::{Mint, TokenInterface};
 use crate::states::Escrow;
 
 #[derive(Accounts)]
+#[instruction(seed: u64)]
 pub struct Init<'info> {
     #[account(mut)]
     pub maker: Signer<'info>,
@@ -17,7 +18,7 @@ pub struct Init<'info> {
         init,
         payer = maker,
         space = Escrow::DISCRIMINATOR.len() + Escrow::INIT_SPACE,
-        seeds = [b"escrow", maker.key().as_ref(), mint_a.key().as_ref()],
+        seeds = [b"escrow", seed.to_le_bytes().as_ref(), maker.key().as_ref(), mint_a.key().as_ref()],
         bump
     )]
     pub escrow: Account<'info, Escrow>,
