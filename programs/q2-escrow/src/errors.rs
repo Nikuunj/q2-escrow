@@ -7,5 +7,7 @@ pub enum CustomError {
    #[msg("Invalid End Time")]
    InvalidEndTime,
    #[msg("Timeout for participent in this Game")]
-   Timeout
+   Timeout, 
+   #[msg("Wait for gamed")]
+   GameNotEnded, 
 }

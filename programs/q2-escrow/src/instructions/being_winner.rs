@@ -9,14 +9,6 @@ impl <'info> BeingWinner<'info> {
       let clock = Clock::get().unwrap();
       let current_time = clock.unix_timestamp;
 
-      // let signer_seeds: &[&[&[u8]]] = &[&[
-      //    b"config", 
-      //    self.config_game.seed.to_le_bytes().as_ref(),
-      //    self.config_game.create_by.as_ref(),
-      //    self.mint.key().as_ref(), 
-      //    &[self.config_game.bump]
-      // ]];
-
       require!(amount > self.config_game.last_deposit_amount, CustomError::InvalidAmount);
       require!(current_time < self.config_game.end_time, CustomError::Timeout);
 

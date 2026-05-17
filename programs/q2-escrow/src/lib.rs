@@ -30,4 +30,16 @@ pub mod q2_escrow {
     pub fn refund(ctx: Context<Refund>) -> Result<()> {
         ctx.accounts.refund()
     }
+
+    pub fn init_game(ctx: Context<InitGame>, seed: u64, end_time: i64, amount: u64) -> Result<()>{
+        ctx.accounts.init_game(seed, end_time, amount, &ctx.bumps)
+    }
+
+    pub fn being_winner(ctx: Context<BeingWinner>, amount: u64) -> Result<()> {
+        ctx.accounts.being_winner(amount)
+    }
+
+    pub fn winner_withdraw(ctx: Context<WinnerWithdraw>) -> Result<()> {
+        ctx.accounts.winner_withdraw()
+    }
 }

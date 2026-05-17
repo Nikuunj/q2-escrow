@@ -4,7 +4,7 @@ use anchor_spl::token_interface::{transfer_checked, TransferChecked};
 use crate::{ConfigGame, InitGameBumps, derive_account::InitGame, CustomError};
 
 impl<'info> InitGame<'info> {
-   pub fn init_game(&mut self, seed: u64, end_time: i64, amount: u64, bumps: InitGameBumps) -> Result<()> {
+   pub fn init_game(&mut self, seed: u64, end_time: i64, amount: u64, bumps: &InitGameBumps) -> Result<()> {
       let clock = Clock::get().unwrap();
       let current_time = clock.unix_timestamp;
 
