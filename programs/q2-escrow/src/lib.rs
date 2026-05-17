@@ -5,9 +5,11 @@ declare_id!("DvbCYtSnXwdC49d5rsLkeRjVLxtwSRYuN8Y1TZzteeL9");
 mod derive_account;
 mod states;
 mod instructions;
+mod errors;
 
 pub use derive_account::*;
 pub use states::*;
+pub use errors::*;
 
 #[program]
 pub mod q2_escrow {
